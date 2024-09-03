@@ -2,17 +2,19 @@
 
 import { Box, Button, Container, TextField, Typography } from "@mui/material";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [name, setName] = useState<string>("");
-  useEffect(() => {
-    setName("Não definido");
-  }, []);
+  const router = useRouter();
+  // const [name, setName] = useState<string>("");
+  // useEffect(() => {
+  //   setName("Não definido");
+  // }, []);
 
-  useEffect(() => {
-    window.alert("O nome foi alterado!");
-  }, [name]);
+  // useEffect(() => {
+  //   window.alert("O nome foi alterado!");
+  // }, [name]);
 
   return (
     <Container component="main" maxWidth="xs">
@@ -26,7 +28,7 @@ export default function Home() {
       >
         <Typography variant="h5">LogIn</Typography>
 
-        <Box>Nome: {name}</Box>
+        <Box>Nome:</Box>
 
         <Box
           //component="form"
@@ -61,7 +63,8 @@ export default function Home() {
             color="primary"
             sx={{ marginTop: 3, marginBottom: 2 }}
             onClick={() => {
-              setName("João");
+              //   setName("João");
+              router.push("/home");
             }}
           >
             Entrar
