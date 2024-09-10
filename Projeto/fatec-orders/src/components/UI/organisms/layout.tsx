@@ -15,7 +15,7 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import { useRouter } from "next/navigation";
-import CustomListItem from "../molecules/customListItem";
+import CustomListItem from "../molecules/CustomListItem";
 
 const drawerWidth = 240;
 
@@ -81,10 +81,9 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 //////////////////////////Layout começa aqui///////////////////////////
 interface LayoutProps {
   children: React.ReactNode;
-  name: String;
 }
 
-export const Layout: React.FC<LayoutProps> = ({ children, name }) => {
+export const Layout: React.FC<LayoutProps> = ({ children }) => {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const router = useRouter();
