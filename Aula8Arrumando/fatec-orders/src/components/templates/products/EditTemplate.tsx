@@ -3,15 +3,8 @@
 import Layout from "@/components/UI/organisms/Layout";
 import { IProduct } from "@/interfaces/IProduct";
 import { ProductEditValidator } from "@/validators/ProductEditValidator";
-import {
-  Box,
-  Button,
-  InputLabel,
-  MenuItem,
-  Select,
-  TextField,
-} from "@mui/material";
-import { useFormik, validateYupSchema } from "formik";
+import { Box, Button, MenuItem, Select, TextField } from "@mui/material";
+import { useFormik } from "formik";
 
 const EditTemplate: React.FC = () => {
   const formik = useFormik<IProduct>({
