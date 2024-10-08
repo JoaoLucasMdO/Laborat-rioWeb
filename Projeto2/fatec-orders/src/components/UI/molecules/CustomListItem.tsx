@@ -5,7 +5,6 @@ import {
   ListItemText,
 } from "@mui/material";
 import { useRouter } from "next/navigation";
-import React from "react";
 
 interface CustomListItemProps {
   text: string;
@@ -14,12 +13,11 @@ interface CustomListItemProps {
 }
 
 const CustomListItem: React.FC<CustomListItemProps> = ({
-  icon,
-  path,
   text,
+  path,
+  icon,
 }) => {
   const router = useRouter();
-
   return (
     <ListItem disablePadding>
       <ListItemButton

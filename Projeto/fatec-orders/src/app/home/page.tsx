@@ -1,11 +1,12 @@
-import Layout from "@/components/UI/organisms/layout";
-import Image from "next/image";
+"use client";
+
+import Layout from "@/components/UI/organisms/Layout";
 import { Box } from "@mui/material";
 
 const Home = () => {
   return (
-    <Layout name="layout">
-      <Image alt="imagem" src="/fatec.jpg" width={800} height={300}></Image>
+    <Layout>
+      <Box> Bem vindo! </Box>
     </Layout>
   );
 };

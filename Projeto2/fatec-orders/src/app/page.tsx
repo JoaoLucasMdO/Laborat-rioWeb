@@ -8,13 +8,12 @@ import { useEffect, useState } from "react";
 export default function Home() {
   const router = useRouter();
   // const [name, setName] = useState<string>("");
-
   // useEffect(() => {
-  //   setName("não definido");
+  //   setName("Não definido");
   // }, []);
 
   // useEffect(() => {
-  //   alert("O nome foi alterado!");
+  //   window.alert("O nome foi alterado!");
   // }, [name]);
 
   return (
@@ -23,16 +22,16 @@ export default function Home() {
         sx={{
           display: "flex",
           flexDirection: "column",
-          alignItems: "center",
+          alignItens: "center",
           marginTop: "0.5rem",
         }}
       >
         <Typography variant="h5">LogIn</Typography>
 
-        {/* <Box>Nome: {name}</Box> */}
+        <Box>Nome:</Box>
 
         <Box
-          // component="form"
+          //component="form"
           sx={{ marginTop: 1 }}
         >
           <TextField
@@ -40,22 +39,22 @@ export default function Home() {
             required
             fullWidth
             id="user"
-            label="Usuário"
             name="user"
+            label="Usuário"
             autoFocus
-            // value={}
-            // onChange={}
+            //value={}
+            //onChange={}
           />
           <TextField
             margin="normal"
             required
             fullWidth
-            id="password"
-            label="Senha"
-            name="password"
             type="password"
-            // value={}
-            // onChange={}
+            id="password"
+            name="password"
+            label="Senha"
+            //value={}
+            //onChange={}
           />
           <Button
             type="submit"
@@ -64,6 +63,7 @@ export default function Home() {
             color="primary"
             sx={{ marginTop: 3, marginBottom: 2 }}
             onClick={() => {
+              //   setName("João");
               router.push("/home");
             }}
           >

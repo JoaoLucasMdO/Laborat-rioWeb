@@ -1,8 +1,8 @@
 "use client";
 
 import CustomTable from "@/components/UI/organisms/CustomTable";
-import Layout from "@/components/UI/organisms/Layout";
-import { env } from "@/config/env";
+import Layout from "@/components/UI/organisms/layout";
+import env from "@/config/env";
 import { Box } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -19,10 +19,9 @@ const Products = () => {
         description: product.descricao,
         brand: product.marca,
         value: product.valor,
-        weight: product.peso_gramas,
+        weight: product.peso_grama,
         flavor: product.sabor,
       }));
-
       setRows(products);
     };
 
@@ -52,7 +51,7 @@ const Products = () => {
       id: "weight",
       numeric: true,
       disablePadding: false,
-      label: "Peso",
+      label: "Peso(g)",
     },
     {
       id: "flavor",
@@ -64,12 +63,7 @@ const Products = () => {
 
   return (
     <Layout>
-      <Box> Lista de Produtos </Box>
-      <CustomTable
-        rows={rows}
-        headCells={headCells}
-        editPath="/products/edit/"
-      />
+      <CustomTable rows={rows} headCells={headCells} />
     </Layout>
   );
 };

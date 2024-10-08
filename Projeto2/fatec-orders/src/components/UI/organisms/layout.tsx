@@ -1,5 +1,4 @@
 "use client";
-
 import * as React from "react";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
@@ -79,13 +78,15 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   justifyContent: "flex-end",
 }));
 
+//////////////////////////Layout começa aqui///////////////////////////
 interface LayoutProps {
   children: React.ReactNode;
 }
 
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+export const Layout: React.FC<LayoutProps> = ({ children }) => {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const router = useRouter();
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -94,8 +95,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-
-  const router = useRouter();
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -144,16 +143,17 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           </IconButton>
         </DrawerHeader>
         <Divider />
-
         <List>
-          <CustomListItem text="Início" path="/home" icon={<InboxIcon />} />
           <CustomListItem
             text="Produtos"
             path="/products"
             icon={<InboxIcon />}
-          />
-          <CustomListItem text="Pedidos" path="/orders" icon={<InboxIcon />} />
-          <CustomListItem text="Sair" path="/" icon={<InboxIcon />} />
+          ></CustomListItem>
+          <CustomListItem
+            text="Sair"
+            path="/home"
+            icon={<InboxIcon />}
+          ></CustomListItem>
         </List>
         <Divider />
       </Drawer>

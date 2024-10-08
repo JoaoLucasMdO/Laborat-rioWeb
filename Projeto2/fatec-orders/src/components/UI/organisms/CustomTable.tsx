@@ -14,8 +14,6 @@ import Paper from "@mui/material/Paper";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
 import { visuallyHidden } from "@mui/utils";
-import { useRouter } from "next/navigation";
-import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 
 /* TableBody > TableRow */
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
@@ -72,7 +70,7 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
         id="tableTitle"
         component="div"
       >
-        Nutrition
+        Lista de Produtos
       </Typography>
     </Toolbar>
   );
@@ -81,14 +79,9 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
 interface CustomTableProps {
   rows: any[];
   headCells: any;
-  editPath: string;
 }
 
-export default function CustomTable({
-  rows,
-  headCells,
-  editPath,
-}: CustomTableProps) {
+export default function CustomTable({ rows, headCells }: CustomTableProps) {
   const [order, setOrder] = React.useState<Order>("asc");
   const [orderBy, setOrderBy] = React.useState<string>("");
   const [selected, setSelected] = React.useState<readonly number[]>([]);
@@ -155,15 +148,7 @@ export default function CustomTable({
   };
 
   /* TableBody > TableRow */
-  const handleClick = (
-    event: React.MouseEvent<unknown>,
-    id: number,
-    router: AppRouterInstance,
-    editPath: string
-  ) => {
-    ///products/edit/
-    router.push(`${editPath}${id}`);
-
+  const handleClick = (event: React.MouseEvent<unknown>, id: number) => {
     const selectedIndex = selected.indexOf(id);
     let newSelected: readonly number[] = [];
 
@@ -214,8 +199,6 @@ export default function CustomTable({
     [order, orderBy, page, rowsPerPage, rows]
   );
 
-  const router = useRouter();
-
   return (
     <Box sx={{ width: "100%" }}>
       <Paper sx={{ width: "100%", mb: 2 }}>
@@ -242,9 +225,7 @@ export default function CustomTable({
                 return (
                   <TableRow
                     hover
-                    onClick={(event) =>
-                      handleClick(event, row.id, router, editPath)
-                    }
+                    onClick={(event) => handleClick(event, row.id)}
                     role="checkbox"
                     aria-checked={isItemSelected}
                     tabIndex={-1}
@@ -262,7 +243,10 @@ export default function CustomTable({
                         </TableCell>
                       );
                     })}
-                    {/* <TableCell component="th" id={labelId} scope="row"> */}
+
+                    <TableCell component="th" id={labelId} scope="row">
+                      {row.name}
+                    </TableCell>
                   </TableRow>
                 );
               })}
