@@ -64,7 +64,7 @@ const Products = () => {
 
   return (
     <Layout>
-      <Box> Lista de Produtos </Box>
+      <Box data-testid="productList"> Lista de Produtos </Box>
       <CustomTable
         rows={rows}
         headCells={headCells}

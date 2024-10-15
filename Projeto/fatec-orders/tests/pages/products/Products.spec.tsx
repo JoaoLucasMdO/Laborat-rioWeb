@@ -37,6 +37,8 @@ describe("Products list page", () => {
   it("Should render products list", () => {
     render(<Products />);
 
+    screen.getByTestId("productList");
+
     const productName = screen.findByRole("cell", {
       name: /Tortuguita/i,
     });
