@@ -17,6 +17,7 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import { useRouter } from "next/navigation";
 import CustomListItem from "../molecules/CustomListItem";
+import { useAuth } from "@/context/AuthContext";
 
 const drawerWidth = 240;
 
@@ -95,7 +96,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     setOpen(false);
   };
 
-  const router = useRouter();
+  const { logout } = useAuth();
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -153,7 +154,14 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             icon={<InboxIcon />}
           />
           <CustomListItem text="Pedidos" path="/orders" icon={<InboxIcon />} />
-          <CustomListItem text="Sair" path="/" icon={<InboxIcon />} />
+          <CustomListItem
+            text="Sair"
+            path="/"
+            icon={<InboxIcon />}
+            beforeRedirect={() => {
+              logout();
+            }}
+          />
         </List>
         <Divider />
       </Drawer>

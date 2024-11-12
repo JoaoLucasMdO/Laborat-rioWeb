@@ -11,12 +11,14 @@ interface CustomListItemProps {
   text: string;
   path: string;
   icon: React.ReactNode;
+  beforeRedirect?: () => void;
 }
 
 const CustomListItem: React.FC<CustomListItemProps> = ({
   icon,
   path,
   text,
+  beforeRedirect,
 }) => {
   const router = useRouter();
 
@@ -24,6 +26,7 @@ const CustomListItem: React.FC<CustomListItemProps> = ({
     <ListItem disablePadding>
       <ListItemButton
         onClick={() => {
+          if (beforeRedirect) beforeRedirect();
           router.push(path);
         }}
       >

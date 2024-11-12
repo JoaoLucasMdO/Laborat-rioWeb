@@ -1,12 +1,16 @@
 "use client";
 
+import { useAuth } from "@/context/AuthContext";
 import { Box, Button, Container, TextField, Typography } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 export default function Home() {
   const router = useRouter();
+
+  const { bearerToken, login } = useAuth();
+
   // const [name, setName] = useState<string>("");
 
   // useEffect(() => {
@@ -27,9 +31,9 @@ export default function Home() {
           marginTop: "0.5rem",
         }}
       >
-        <Typography variant="h5">LogIn</Typography>
+        <Typography variant="h5">Login</Typography>
 
-        {/* <Box>Nome: {name}</Box> */}
+        <Box>{bearerToken}</Box>
 
         <Box
           // component="form"
@@ -64,6 +68,7 @@ export default function Home() {
             color="primary"
             sx={{ marginTop: 3, marginBottom: 2 }}
             onClick={() => {
+              login("jão", "123");
               router.push("/home");
             }}
           >
